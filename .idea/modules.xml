@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ApplyThemeOnRecyclerViewLollipop.iml" filepath="$PROJECT_DIR$/ApplyThemeOnRecyclerViewLollipop.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apply-theme-on-RecyclerView-after-lollipop.iml" filepath="$PROJECT_DIR$/apply-theme-on-RecyclerView-after-lollipop.iml" />
     </modules>
   </component>
 </project>
