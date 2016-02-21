@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).build());
-        mRecyclerView.setAdapter(new DemoAdapter(this, true, Arrays.asList("a", "b", "c")));
+        mRecyclerView.setAdapter(new DemoAdapter(true, Arrays.asList("a", "b", "c")));
     }
 
     @OnClick({R.id.rb_theme_on, R.id.rb_theme_off})
@@ -42,12 +42,11 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return;
         }
-        mRecyclerView.setAdapter(new DemoAdapter(this, setTheme, Arrays.asList("a", "b", "c")));
+        mRecyclerView.setAdapter(new DemoAdapter(setTheme, Arrays.asList("a", "b", "c")));
     }
 
     public static class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.ViewHolder> {
         private List<String> mInfos;
-        private Context mContext;
         private boolean mSetTheme;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -60,8 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        public DemoAdapter(Context context, boolean setTheme, List<String> data) {
-            mContext = context.getApplicationContext();
+        public DemoAdapter(boolean setTheme, List<String> data) {
             mSetTheme = setTheme;
             setData(data);
         }
@@ -72,9 +70,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-            return new ViewHolder(LayoutInflater.from(mContext)
-                    .inflate(mSetTheme ? R.layout.list_item : R.layout.list_item_theme_off, viewGroup, false));
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//            Context context = parent.getContext();
+            Context context = parent.getContext().getApplicationContext();
+            return new ViewHolder(LayoutInflater.from(context)
+                    .inflate(mSetTheme ? R.layout.list_item : R.layout.list_item_theme_off, parent, false));
         }
 
         @Override
